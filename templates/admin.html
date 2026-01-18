@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-primary">Admin Dashboard</h2>
+            <a href="/logout" class="btn btn-danger">
+                🔒 Logout
+            </a>
+        </div>
+
+        <!-- Declare Result -->
+        <div class="text-center mb-4">
+            <a href="/declare_result" class="btn btn-success btn-lg">
+                📢 Declare Election Result
+            </a>
+        </div>
+
+        <hr>
+
+        <!-- Add Candidate -->
+        <h5 class="mb-3">Add New Candidate</h5>
+        <form method="post" class="d-flex gap-2 mb-4">
+            <input type="text"
+                   name="candidate"
+                   class="form-control"
+                   placeholder="Enter candidate name"
+                   required>
+            <button type="submit" class="btn btn-primary">
+                ➕ Add
+            </button>
+        </form>
+
+        <!-- Candidate List -->
+        <h5 class="mb-3">Candidates & Votes</h5>
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Candidate Name</th>
+                    <th>Total Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for c in candidates %}
+                <tr>
+                    <td>{{ c[1] }}</td>
+                    <td>{{ c[2] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
